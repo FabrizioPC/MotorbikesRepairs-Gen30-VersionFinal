@@ -94,7 +94,7 @@ export const deleteUser = async (req, res, next) => {
          });
       }
       await usersService.deleteUser(user);
-      return res.status(200).json(null);
+      return res.status(204).json(null);
    } catch (error) {
       return res.status(500).json({
          status: "fail",
