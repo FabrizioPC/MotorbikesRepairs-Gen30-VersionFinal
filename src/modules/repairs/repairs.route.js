@@ -7,11 +7,17 @@ import {
   updateRepair,
 } from './repairs.controller.js';
 import { servicePending } from './repairs.middleware.js';
+import { protect, restrictTo } from '../users/users.middleware.js';
 
 export const router = express.Router();
 
-router.route('/').get(findAllRepairs);
+router.use(protect);
+
 router.route('/').post(createRepair);
+
+router.use(restrictTo('employee'));
+
+router.route('/').get(findAllRepairs);
 router
   .route('/:id')
   .get(servicePending, findOneRepair)
