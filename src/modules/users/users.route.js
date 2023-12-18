@@ -8,12 +8,7 @@ import {
   updateUser,
   changePassword,
 } from './users.controller.js';
-import {
-  protect,
-  protectAccountOwner,
-  restrictTo,
-  verifyUserExist,
-} from './users.middleware.js';
+import { protect, restrictTo, verifyUserExist } from './users.middleware.js';
 
 export const router = express.Router();
 
@@ -30,5 +25,5 @@ router.patch('/change-password', changePassword);
 router
   .route('/:id')
   .get(restrictTo('employee'), verifyUserExist, findOneUserById)
-  .patch(verifyUserExist, protectAccountOwner, updateUser)
-  .delete(verifyUserExist, protectAccountOwner, deleteUser);
+  .patch(verifyUserExist, updateUser)
+  .delete(verifyUserExist, deleteUser);
