@@ -1,18 +1,19 @@
-import express from "express";
+import express from 'express';
 import {
-   createRepair,
-   deleteRepair,
-   findAllRepairs,
-   findOneRepair,
-   updateRepair,
-} from "./repairs.controller.js";
+  createRepair,
+  deleteRepair,
+  findAllRepairs,
+  findOneRepair,
+  updateRepair,
+} from './repairs.controller.js';
+import { servicePending } from './repairs.middleware.js';
 
 export const router = express.Router();
 
-router.route("/").get(findAllRepairs).post(createRepair);
-
+router.route('/').get(findAllRepairs);
+router.route('/').post(createRepair);
 router
-   .route("/:id")
-   .get(findOneRepair)
-   .patch(updateRepair)
-   .delete(deleteRepair);
+  .route('/:id')
+  .get(servicePending, findOneRepair)
+  .patch(servicePending, updateRepair)
+  .delete(deleteRepair);

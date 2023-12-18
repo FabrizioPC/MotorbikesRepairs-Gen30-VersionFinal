@@ -12,6 +12,14 @@ const Repairs = sequelize.define("repairs", {
       type: DataTypes.DATE,
       allowNull: false,
    },
+   motorsNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+   },
+   description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+   },
    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
