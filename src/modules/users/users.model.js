@@ -3,14 +3,13 @@ import sequelize from '../../config/database/database.js';
 import { encryptedPassword } from '../../config/plugins/encripted-password.plugin.js';
 
 const User = sequelize.define(
-  'Users',
+  'users',
   {
     id: {
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      field: 'users_id',
     },
     name: {
       type: DataTypes.STRING(100),

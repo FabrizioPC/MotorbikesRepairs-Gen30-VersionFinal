@@ -2,7 +2,7 @@ import z from 'zod';
 import { extractValidationData } from '../../common/utils/extractErrorData.js';
 
 const createRepairSchema = z.object({
-  date: z.date({
+  date: z.coerce.date({
     required_error: 'Date is required',
     invalid_type_error: "That's not a date!, correct date: YYYY-MM-DD",
   }),
